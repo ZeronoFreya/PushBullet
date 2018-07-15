@@ -482,7 +482,7 @@
         left("51%");
         transform("translate(-50% , -50%)");
         return img({
-          src: "/img/DragAndDrop.png",
+          src: "img/DragAndDrop.png",
           width: 86,
           height: 123
         });
