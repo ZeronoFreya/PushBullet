@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+import os
 
 import sys
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
@@ -13,9 +13,11 @@ class PushBullet(QWebEngineView):
         super(PushBullet, self).__init__(parent)
         self.settings().setAttribute(QWebEngineSettings.JavascriptEnabled, True)
         path = __file__
-        abs_dir = path[:path.rfind("/")]
-        self.load(QUrl('file:///%s/index.html' % abs_dir))
-    
+        dirname = os.path.dirname(path)
+        full_dir = 'file:///' + \
+            os.path.join(dirname, 'index.html').replace('\\', '/')
+        self.load(QUrl(full_dir))
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
